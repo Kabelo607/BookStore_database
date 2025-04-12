@@ -10,6 +10,20 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON Books TO 'staff';
 GRANT SELECT, INSERT, UPDATE, DELETE ON Orders TO 'staff';
 GRANT SELECT ON Books TO 'customer';
 
+-- Creating users
+CREATE USER 'admin_user'@'localhost' IDENTIFIED BY 'admin_password';
+CREATE USER 'staff_user'@'localhost' IDENTIFIED BY 'staff_password';
+CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'customer_password';
+
+-- Assign roles to users
+GRANT 'admin' TO 'admin_user'@'localhost';
+GRANT 'staff' TO 'staff_user'@'localhost';
+GRANT 'customer' TO 'customer_user'@'localhost';
+
+SET ROLE 'customer';
+SET ROLE 'staff';
+SET ROLE 'admin';
+
 CREATE TABLE Authors (
     author_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
