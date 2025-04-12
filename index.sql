@@ -1,5 +1,15 @@
 Create Database Bookstore;
 
+CREATE ROLE 'admin';
+CREATE ROLE 'staff';
+CREATE ROLE 'customer';
+
+
+GRANT ALL PRIVILEGES ON bookstore.* TO 'admin';
+GRANT SELECT, INSERT, UPDATE, DELETE ON Books TO 'staff';
+GRANT SELECT, INSERT, UPDATE, DELETE ON Orders TO 'staff';
+GRANT SELECT ON Books TO 'customer';
+
 CREATE TABLE Authors (
     author_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
